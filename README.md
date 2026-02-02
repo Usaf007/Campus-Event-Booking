@@ -1,86 +1,133 @@
 # 🎓 Campus Event Booking System
 
-A full-stack, database-driven web application built with **Django** and **Bootstrap 5**. This system allows university students to browse academic events, secure bookings in real-time, and manage their tickets via a personal dashboard.
+![Status](https://img.shields.io/badge/Status-Active-success?style=flat-square)
+![Python](https://img.shields.io/badge/Python-3.10%2B-blue?style=flat-square)
+![Django](https://img.shields.io/badge/Django-5.0-green?style=flat-square)
+![Bootstrap](https://img.shields.io/badge/Bootstrap-5.3-purple?style=flat-square)
+![License](https://img.shields.io/badge/License-MIT-orange?style=flat-square)
 
-**Developer:** Yousaf Atiq  
-**Status:** ✅ Active / Completed
-
----
-
-## 🚀 Features
-
-### 🔹 User & Authentication
-* **Secure Sign Up/Login:** Built on top of Django's robust authentication system.
-* **Role-Based Access:** Admins have full control; Users can only manage their own bookings.
-* **Profile Management:** Personalized dashboard ("My Bookings") for every student.
-
-### 🔹 Event Management (Backend)
-* **Real-time Seat Tracking:** Automatically decrements available seat counts upon booking.
-* **Double-Booking Prevention:** Logic to prevent a user from booking the same event twice.
-* **Sold Out Logic:** "Book Now" buttons are disabled automatically when seats reach zero.
-* **Admin Panel:** Full GUI for creating events, uploading images, and managing capacity.
-
-### 🔹 Modern Frontend
-* **Responsive Design:** Built with **Bootstrap 5** for mobile and desktop compatibility.
-* **Dynamic UI:** Clean "Glassmorphism" aesthetic with hover effects and card layouts.
-* **Alert System:** Success/Error messages (Toast notifications) for user feedback.
+> A robust, full-stack event management solution designed for university campuses. Built with **Django** MVT architecture and **Bootstrap 5** for a seamless, responsive user experience.
 
 ---
 
-## 🛠️ Tech Stack
+## 📖 Overview
 
-* **Backend:** Python, Django 5.x
-* **Database:** SQLite (Dev), PostgreSQL (Production ready)
-* **Frontend:** HTML5, CSS3, Bootstrap 5
-* **Version Control:** Git & GitHub
+The **Campus Event Booking System** solves the problem of manual event registration by providing a centralized digital platform. It features strict logic for seat management, ensuring no overbooking occurs, and provides a personalized dashboard for students to track their academic schedules.
 
----
-
-## 📸 Screenshots
-
-*(You can upload screenshots of your Home Page and Dashboard here later)*
+**Developer:** Usaf  
+**Current Version:** v1.0.0
 
 ---
 
-## ⚙️ Installation & Setup
+## ⚡ Key Features
 
-If you want to run this project locally, follow these steps:
+### 🔐 Advanced Authentication & RBAC
+* **Role-Based Access Control (RBAC):** Distinct permissions for Superusers (Admins) and Standard Users (Students).
+* **Secure Session Management:** Built on top of Django's industry-standard auth system.
+* **Automated Redirection:** Smart routing logic based on login status.
 
-**1. Clone the repository**
+### 📅 Event Logic & Data Integrity
+* **Concurrency Handling:** Prevents race conditions where multiple users might book the last seat simultaneously.
+* **Dynamic Capacity Tracking:** Seat counts update in real-time upon successful transactions.
+* **Constraint Enforcement:** Users are strictly prohibited from double-booking the same event.
+* **Soft Cancellation:** Users can release tickets, automatically restoring inventory to the global pool.
+
+### 🎨 Modern UI/UX
+* **Glassmorphism Design:** A modern, clean interface using semi-transparent layers and blur effects.
+* **Responsive Grid:** Fully functional across Desktop, Tablet, and Mobile devices via Bootstrap 5.
+* **Feedback Loops:** Integrated Toast notifications (Success/Warning/Error) for every user action.
+
+---
+
+## 🛠️ Technical Architecture
+
+### Tech Stack
+| Component | Technology | Description |
+| :--- | :--- | :--- |
+| **Backend** | Python & Django | Handles routing, ORM, and business logic. |
+| **Frontend** | HTML5, CSS3, JS | Rendered via Django Templates (DTL). |
+| **Styling** | Bootstrap 5 | Component library for responsive design. |
+| **Database** | SQLite | Lightweight relational database (Dev). |
+| **Media** | Pillow | Image processing for event banners. |
+
+### Project Structure
 ```bash
-git clone [https://github.com/YOUR_USERNAME/campus-event-booking.git](https://github.com/YOUR_USERNAME/campus-event-booking.git)
-cd campus-event-booking
-2. Create a Virtual Environment
+Campus-Events/
+├── events/                 # Main Application App
+│   ├── migrations/         # Database propagation files
+│   ├── templates/          # HTML files (MVT pattern)
+│   │   ├── events/         # Dashboard & Home templates
+│   │   └── registration/   # Auth templates (Login/Signup)
+│   ├── admin.py            # Admin panel configuration
+│   ├── models.py           # Database Schema
+│   ├── views.py            # Business Logic & Controllers
+│   └── urls.py             # Route definitions
+├── mycampus/               # Project Configuration
+│   ├── settings.py         # Global configs (Apps, Middleware)
+│   └── urls.py             # Root URL dispatcher
+├── media/                  # User uploaded content (Images)
+├── manage.py               # CLI utility
+└── db.sqlite3              # Database file
+🚀 Installation & Setup Guide
+Follow these steps to deploy the project locally.
 
+Prerequisites
+Python 3.10 or higher
+
+Git
+
+1. Clone the Repository
 Bash
+git clone [https://github.com/Usaf007/campus-event-booking.git](https://github.com/Usaf007/campus-event-booking.git)
+cd campus-event-booking
+2. Configure Environment
+Bash
+# Create Virtual Environment
 python -m venv venv
-# Windows:
+
+# Activate (Windows)
 venv\Scripts\activate
-# Mac/Linux:
+
+# Activate (Mac/Linux)
 source venv/bin/activate
 3. Install Dependencies
-
 Bash
 pip install django pillow
-4. Apply Migrations
-
+4. Database Initialization
 Bash
 python manage.py migrate
-5. Create a Superuser (Admin)
-
+5. Create Administrator
 Bash
 python manage.py createsuperuser
-6. Run the Server
-
+# Follow the prompts to set username/password
+6. Launch Application
 Bash
 python manage.py runserver
-Visit http://127.0.0.1:8000/ in your browser.
+Access the application at: http://127.0.0.1:8000/
 
-🧪 Testing the Logic
-Login: Sign up as a new user.
+🔮 Future Roadmap
+[ ] Email Notifications: Send confirmation emails upon booking.
 
-Book: Navigate to an event and click "Book Now".
+[ ] Waitlist System: Allow users to queue for fully booked events.
 
-Verify: Check the "My Bookings" tab to see your ticket.
+[ ] Payment Integration: Stripe/PayPal integration for paid workshops.
 
-Cancel: Cancel the ticket and watch the seat count on the homepage increase automatically.
+[ ] REST API: Build an API using Django REST Framework (DRF) for mobile apps.
+
+🤝 Contribution
+Contributions are welcome! Please fork the repository and submit a pull request for any enhancements.
+
+Fork the Project
+
+Create your Feature Branch (git checkout -b feature/AmazingFeature)
+
+Commit your Changes (git commit -m 'Add some AmazingFeature')
+
+Push to the Branch (git push origin feature/AmazingFeature)
+
+Open a Pull Request
+
+📄 License
+Distributed under the MIT License. See LICENSE for more information.
+
+Built with ❤️ by Usaf
