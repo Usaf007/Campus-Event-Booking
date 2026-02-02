@@ -68,42 +68,55 @@ Campus-Events/
 ├── media/                  # User uploaded content (Images)
 ├── manage.py               # CLI utility
 └── db.sqlite3              # Database file
-🚀 Installation & Setup Guide
-Follow these steps to deploy the project locally.
 
-Prerequisites
-Python 3.10 or higher
+## ⚡ Quick Start Guide
 
-Git
+Follow these steps to get a local copy of the project up and running.
 
-1. Clone the Repository
-Bash
-git clone [https://github.com/Usaf007/campus-event-booking.git](https://github.com/Usaf007/campus-event-booking.git)
+**Prerequisites:**
+* Python 3.10 or higher
+* Git
+
+### 1. Clone & Configure
+First, download the repository and set up a secure virtual environment to isolate project dependencies.
+
+```bash
+# Clone the repository
+git clone [https://github.com/YOUR_USERNAME/campus-event-booking.git](https://github.com/YOUR_USERNAME/campus-event-booking.git)
+
+# Enter the project directory
 cd campus-event-booking
-2. Configure Environment
-Bash
-# Create Virtual Environment
+
+# Create a virtual environment
 python -m venv venv
 
-# Activate (Windows)
+# Activate the environment
+# Windows:
 venv\Scripts\activate
-
-# Activate (Mac/Linux)
+# Mac/Linux:
 source venv/bin/activate
-3. Install Dependencies
+2. Install & Initialize
+Install the required packages and build the database structure.
+
 Bash
+# Install Django and image handling libraries
 pip install django pillow
-4. Database Initialization
-Bash
+
+# Apply database migrations (Creates tables)
 python manage.py migrate
-5. Create Administrator
-Bash
+
+# Create an Admin account (Follow the prompts)
 python manage.py createsuperuser
-# Follow the prompts to set username/password
-6. Launch Application
+3. Launch the Application
+Start the local development server.
+
 Bash
 python manage.py runserver
-Access the application at: http://127.0.0.1:8000/
+Success! The application is now live.
+
+Frontend: Visit http://127.0.0.1:8000/
+
+Admin Panel: Visit http://127.0.0.1:8000/admin/
 
 🔮 Future Roadmap
 [ ] Email Notifications: Send confirmation emails upon booking.
