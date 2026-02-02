@@ -82,7 +82,7 @@ First, download the repository and set up a secure virtual environment to isolat
 
 ```bash
 # Clone the repository
-git clone [https://github.com/YOUR_USERNAME/campus-event-booking.git](https://github.com/YOUR_USERNAME/campus-event-booking.git)
+git clone [https://github.com/Usaf007/campus-event-booking.git](https://github.com/Usaf007/campus-event-booking.git)
 
 # Enter the project directory
 cd campus-event-booking
